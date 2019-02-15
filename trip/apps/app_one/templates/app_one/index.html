@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+   
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Login and Registration</title>
+  </head>
+  <body>
+      {% if messages %}
+      <ul class="messages">
+          {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+        <h1>Welcome to Trip Buddy</h1>
+        <h2>Registration</h2>
+        <form action="/register" method='POST'>
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="formGroupExampleInput">First Name:</label>
+              <input type="text" class="form-control" id="formGroupExampleInput" placeholder="First Name" name="fname">
+            </div>
+            <div class="form-group">
+              <label for="formGroupExampleInput2">Last Name:</label>
+              <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Last Name" name="lname">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput">Email:</label>
+                <input type="email" class="form-control" id="formGroupExampleInput" placeholder="Email" name="email">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput">Password:</label>
+                <input type="password" class="form-control" id="formGroupExampleInput" placeholder="Password" name="password">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput">Confirm Password:</label>
+                <input type="password" class="form-control" id="formGroupExampleInput" placeholder="Confirm Password" name="confirmpw">
+                <input type="submit" value="Submit">
+            </div>
+          </form>
+          <h2>Login</h2>
+          <form action="/login" method="POST">
+              {% csrf_token %}
+              <p>Email: <input type="text" name="email"></p>
+              <p>Password: <input type="password" name="pw"></p>
+              <input type="submit">
+
+          </form>
+    <!-- <p>{{request.session.username}} {{request.session.user_id}}</p> -->
+
+    </body>
+    
+
+
+
+</html>
